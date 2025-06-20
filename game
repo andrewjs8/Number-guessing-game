@@ -1,1 +1,28 @@
-
+import random
+number = random.randint(1, 100)
+attempts = 5
+print("Welcome to the number guesser game! You have 5 attempts to guess the number I'm thinking of between 1 and 100.")
+guess = input("What is your first guess? ")
+while attempts > 0:
+    if not guess.isdigit() or not (1 <= int(guess) <= 100):
+        print("Invalid input. Please enter a number between 1 and 100.")
+        guess = input(
+            f"You have {attempts} attempts left. What is your next guess?")
+        continue
+    else:
+        if int(guess) == number:
+            print("Congratulations! You've guessed the number correctly!")
+            break
+        elif int(guess) > number:
+            print("Too high! Guess again.")
+            attempts -= 1
+        elif int(guess) < number:
+            print("Too low! Guess again.")
+            attempts -= 1
+        else:
+            print("Invalid input. Please enter a number between 1 and 100.")
+        guess = input(
+            f"You have {attempts} attempts left. What is your next guess?")
+        if attempts == 0:
+            print(
+                f"Sorry, you have run out of attempts. The correct number was {number}.")
